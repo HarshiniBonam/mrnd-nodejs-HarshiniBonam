@@ -79,7 +79,7 @@ describe("Contacts Test Suite", function(){
 	//TODO: Fill out the test case below that posts a message to a contact
 	// and retrieves it back.
 	describe("post and get message to contact", function(){
-		idCreated = 0;
+		var idCreated = 0;
 		it("should post message to contact", function(done){
 			//TODO: Write your test case here.
 			
@@ -100,13 +100,13 @@ describe("Contacts Test Suite", function(){
 		it("should get message for contact", function(done){
 			//TODO: Write your test case here.
 			request.get({
-							url: contacts_url + "/messages/" + messageid,
+							url: contacts_url + "/"+idCreated+"/messages",
 							json: true
 						},
 		    		    function(error, response, body){
 
-							expect(response.statusCode).toBe(200);
 							console.log(body);
+							expect(response.statusCode).toBe(200);
 							expect(body.msg).toBe("Hello World");
 							done();
 					    });
@@ -114,4 +114,4 @@ describe("Contacts Test Suite", function(){
 		});
 
 	});
-});
+});		
